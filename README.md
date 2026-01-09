@@ -1,2 +1,3 @@
 # QMEE
-blah
+## Data set description
+The data set chosen for assignments comes from a review paper by Clements & George (2022), https://doi.org/10.3354/meps14101. This review paper took a meta-analytical approach to combine 20 studies on the impact of ocean acidification (among other factors) on byssal attachment strength. Byssal threads are fibers which bivalve mollusks use to adhere themselves to surfaces; when these are weakened, the mollusk can be more easily dislodged from a rock during intense waves. Past studies found conflicting results about whether ocean acidification weakened byssal attachment strength, and through their meta analysis, Clements & George were able to conclude that body size was the most accurate predictor, and that larger bodies may be more susceptible to acidification. I would like to use data to further investigate the impact of body size on ocean acidification susceptibility, perhaps expanding into whether temperature impacts as well.
