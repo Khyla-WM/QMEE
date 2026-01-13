@@ -1,13 +1,18 @@
 # "Substantive calculation using" byssal data
 
 ## Read in the dataset, name it
+## JD: Please avoid spaces in file paths
 Byssal <- read.csv("Meta analysis workshop - byssal thread data.csv")
 
 ## Get basic summary statistics to review
 summary(Byssal)
+## JD: Any thoughts on what you see.
 
 ## Calculate the effect size and make a new column, as described in Clements & George 2022
 Byssal$log_response_ratio <- log(Byssal$oa.mean / Byssal$ctrl.mean)
+
+## JD: Up to here seems to cover the assignment; it's good for us if you stick to the assignments early on, since we have a lot of assignments to review.
+## Grade 2/3
 
 ## Create plots to understand the data more in relation to our biological questions
 plot(x = Byssal$Exp..Temp., y = Byssal$log_response_ratio)
