@@ -1,7 +1,5 @@
 # QMEE
 ## Data set description
-# QMEE
-## Data set description
 The (new) dataset chosen for this assignment was collected from 12 watersheds in Gaspe, Quebec. This region has been suffering an outbreak of Eastern Spruce Budworm since 2016, resulting in massive forest damage mostly due to defoliation and tree mortality. My lab, in conjunction with NRCan, has been investigating how this terrestrial damage has impacted stream ecosystems in the forest, utlizing 12 watersheds that create a gradient of defoliation. The dataset I have pulled for this class contains data from water chemistry samples from each of the streams from 2019-2024. It is a large dataset with a lot of different variables measured, so to narrow it down, I want to focus on the nutrient and periphyton content of the streams and investigate whether that changes based on site/defoliation level and/or time.
 
 ### Legend for the streams dataset column names
