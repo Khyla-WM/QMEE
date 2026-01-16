@@ -28,59 +28,104 @@ S350_400 --> Ratio used for calculation of SR. unitless ratio
 SR --> Spectral slope Ratio. unitless ratio. 
 
 Nutrient Detection
+
 DOC.mgL --> Dissolved Organic Carbon. mg/L. Lower Detection Limit = 0.4
+
 DIC.mgL --> Dissolved Inorganic Carbon. mg/L. Lower Detection Limit = 0.5
+
 SRP.mgL --> Soluble Reactive Phosphorous. mg/L. Lower Detection Limit = 0.001
+
 TP.mgL --> total phosphorous. mg/L. Lower Detection Limit = 0.001
+
 TN.mgL --> total nitrogen. mg/L. Lower Detection Limit = 0.2
 
 Water Quality
 pH --> pH. unitless. Lower Detection Limit = 3
+
 cond.umho.cm --> specific conductance. umho/cm
+
 alk.meqL --> total alkalinity. meq/L
 
+
 Element Detection (.mgL)
+
 Ca --> Calcium. mg/L. Lower Detection Limit = 0.01
+
 K --> Potassium. mg/L. Lower Detection Limit = 0.01
+
 Mg --> Magnesium. mg/L. Lower Detection Limit = 0.01
+
 Na --> Sodium. mg/L. Lower Detection Limit = 0.01
+
 SO4 --> Sulphate. mg/L. Lower Detection Limit = 0.2
+
 Cl --> Chloride. mg/L. Lower Detection Limit = 0.2
+
 SiO2 --> Silica Dioxide. mg/L. Lower Detection Limit = 0.25
+
 Al --> Aluminum. mg/L. Lower Detection Limit = 0.005
+
 Fe --> Iron. mg/L. Lower Detection Limit = 0.005
+
 Mn --> Manganese. mg/L. Lower Detection Limit = 0.0005
+
 Zn --> Zinc. mg/L. Lower Detection Limit = 0.001
+
 Cd --> Cadmium. mg/L. Lower Detection Limit = 0.0005
+
 Cu --> Copper. mg/L. Lower Detection Limit = 0.0005
+
 Ni --> Nickel. mg/L. Lower Detection Limit = 0.0005
+
 Pb --> Lead. mg/L. Lower Detection Limit = 0.0005
+
 As --> Arsenic. mg/L. Lower Detection Limit = 0.0005
+
 B --> Boron. mg/L. Lower Detection Limit = 0.01
+
 Ba --> Barium. mg/L. Lower Detection Limit = 0.001
+
 Co --> Cobalt. mg/L. Lower Detection Limit = 0.0005
+
 Cr --> Chromium. mg/L. Lower Detection Limit = 0.0005
+
 Mo --> Molybdenum. mg/L. Lower Detection Limit = 0.001
+
 Se --> Selenium. mg/L. Lower Detection Limit = 0.001
+
 Sr --> Strontium. mg/L. Lower Detection Limit = 0.001
 
 Cl.mgL_tm --> Chloride. mg/L. Lower Detection Limit = 0.2 (_tm is a different lab, same concept)
+
 SO4.mgL_tm --> Sulphate. mg/L. Lower Detection Limit = 0.5
+
 SiO2.mgL_tm --> Silica Dioxide. mg/L. Lower Detection Limit = 0.02
+
 TP.mgL_tm --> Total Phosphorous. mg/L. Lower Detection Limit = 0.002
 
 W_DOC.mgL --> Dissolved Organic carbon. mg/L. Lower Detection Limit = 0.4 (W is a different lab and measuring system)
+
 W_TDN.mgL --> Total Dissolved Nitrogen. mg/L. Lower Detection Limit = 0.2
+
 W_DIC.mgL --> Dissolved Inorganic Carbon. mg/L. Lower Detection Limit = 0.5
+
 W_SiO2.mgL --> Total Silica Dioxide. mg/L. Lower Detection Limit = 1
+
 W_TOP4.mgL --> Total Phosphorous. mg/L. 
 
 Periphyton
+
 cyano.ug.cm2 --> cyanobacteria biomass. ug/cm2
+
 green.ug.cm2 --> green algae biomass. ug/cm2
+
 diat.ug.cm2 --> diatom biomass. ug/cm2
+
 total.ug.cm2 --> total periphyton biomass. ug/cm2
 
 Nitrogen
+
 NO2.NO3.mgL --> Dissolved nitrate and nitrite. mg/L. Lower Detection Limit = 0.04
+
 NH4.mgL --> dissolved ammonia. mg/L. Lower Detection Limit = 0.01
+
