@@ -6,15 +6,25 @@ The (new) dataset chosen for this assignment was collected from 12 watersheds in
 This information was pulled from project_metadata.RDS 
 
 Dissolved Organic Matter Absorbance Values
+
 fi --> fluorescence index. unitless ratio
+
 hix --> humification index. unitless ratio
+
 mhix --> modified humification index. unitless ratio
+
 bix --> biological fluorescence index. unitless ratio
+
 a254 --> absorbance coefficient at 254nm. /m
+
 a300 --> absorbance coefficient at 300nm. /m
+
 E2_E3 --> absorbance ratio 250nm/365nm. unitless ratio
+
 S275_295 --> Ratio used for calculation of SR. unitless ratio
+
 S350_400 --> Ratio used for calculation of SR. unitless ratio
+
 SR --> Spectral slope Ratio. unitless ratio. 
 
 Nutrient Detection
