@@ -1,6 +1,7 @@
 #Assignment 2A: Examine the structure of the data you imported and check it for problems, making sure you understand the r classes. Make one or two plots that might help you see whether your data have any errors or anomolies - report results and fix any problems you can see
 
 #Load in the data
+## JD: Is this the downloaded version?
 streams <- readRDS("streams.RDS")
 
 #Get a basic summary to review
@@ -8,10 +9,14 @@ summary(streams)
 
 #That is a lot of columns, most of which I will not be using for analysis (yet, at least). Lets remove a bunch of columns, keeping only the ones related to nutrient content or periphyton to help answer my biological questions. This has to be done manually because the columns are not named in a way we can filter them to my liking. 
 library(dplyr)
-streams_subset <- subset(streams, select = 
-                           c("site", "year", "date.collected", "DOC.mgL", "DIC.mgL", "TP.mgL", "TN.mgL", 
-                             "cyano.ug.cm2", "green.ug.cm2", "diat.ug.cm2", "total.ug.cm2", 
-                             "W_DOC.mgL", "W_DIC.mgL", "W_TPO4.mgL", "W_TDN.mgL"))
+
+## JD: Maybe the way you did it matches your screen layout or your excellent eyesight. I would try to write this less spread out. I'll change it just for you to see, feel free to change back
+streams_subset <- subset(streams, select = c(
+	"site", "year", "date.collected"
+	, "DOC.mgL", "DIC.mgL", "TP.mgL", "TN.mgL"
+	, "cyano.ug.cm2", "green.ug.cm2", "diat.ug.cm2", "total.ug.cm2"
+	, "W_DOC.mgL", "W_DIC.mgL", "W_TPO4.mgL", "W_TDN.mgL"
+))
 summary(streams_subset)
 
 #I notice the W_TDN.mgL column is coming up as a character, this is because the values are sometimes written as "xxx(<0.2 mg/L DL)" when the xxx is below that threshold. I do not need to know these are below a threshold, and want just the xxx value so this column can be numeric
@@ -23,8 +28,11 @@ streams_subset <- streams_subset %>%
 summary(streams_subset)
 
 # From this summary, we can see that there are many NAs for each variable. I would like to see if these NAs are from specific sites/years to know how to proceed in the future (e.g. were some measures not collected in certain years? Were some site neglected? This could be important as it can determine what variables we use for what analyses) 
+
+## JD: Better to keep library statements at top so people know your requirements
 library(tidyverse)
 
+## JD: Prefer the base pipe (“|>”)
 streams_long <- streams_subset%>%
   pivot_longer(
     cols = -c(year, site, date.collected),

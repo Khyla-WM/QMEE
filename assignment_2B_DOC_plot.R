@@ -41,3 +41,5 @@ ggplot(DOC_plot, aes(x = year, y = mean_val, color = site)) +
   theme_minimal()
 
 # This shows that each site had similar values using both measurements, and shows a unexpected decline in DOC content in 2025 - may be interesting to see if this trend is observed in other nutrients
+
+## JD: Clear and nice 2.2/3
