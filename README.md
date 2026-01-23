@@ -2,6 +2,19 @@
 ## Data set description
 The (new) dataset chosen for this assignment was collected from 12 watersheds in Gaspe, Quebec. This region has been suffering an outbreak of Eastern Spruce Budworm since 2016, resulting in massive forest damage mostly due to defoliation and tree mortality. My lab, in conjunction with NRCan, has been investigating how this terrestrial damage has impacted stream ecosystems in the forest, utlizing 12 watersheds that create a gradient of defoliation. The dataset I have pulled for this class contains data from water chemistry samples from each of the streams from 2019-2024. It is a large dataset with a lot of different variables measured, so to narrow it down, I want to focus on the nutrient and periphyton content of the streams and investigate whether that changes based on site/defoliation level and/or time.
 
+## Assignment 2
+My first script, "assignment_2A_data_cleaning.R", takes my original large dataset and trims it to a workable dataset that includes 6 years worth of stream nutrient and periphyton samples from the Gaspe streams. Once this dataset was trimmed, I looked at the summary of the remaining columns and made some cleaning edits to the column R classes. Then I investigated the NAs present in the columns, cuurious if the NAs were concentrated to certain years/sites, and removed one row which had NA as the year. This script can be found on the main page of my repository, and can be run from my github directory
+
+My second script, "assignment_2B_DOC_plot", investigated how dissolved organic carbon changed in streams across 6 years. It also was an eye test to see if the DOC.mgL and W_DOC.mgL variables (which I was told were mostly equivalent) gave similar results for the years they overlapped. Though not a statistical confirmation, it looked promising. This script can also be found on the main page of my repository, and can be run from the main directory provided you have run 2A first and have a copy of "assignment_2A_data_cleaning.rds" made from that. 
+
+I think I want to investigate the changes in the other nutrients first and see if they have comparable yearly patterns to dissolved organic carbon, and then examine if the 2025 drop impacted the periphyton communities. I would break this into nutrients and then periphyton to ensure replicability. 
+
+
+
+
+
+
+
 ### Legend for the streams dataset column names
 This information was pulled from project_metadata.RDS 
 
