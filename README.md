@@ -9,7 +9,8 @@ My second script, "assignment_2B_DOC_plot", investigated how dissolved organic c
 
 I think I want to investigate the changes in the other nutrients first and see if they have comparable yearly patterns to dissolved organic carbon, and then examine if the 2025 drop impacted the periphyton communities. I would break this into nutrients and then periphyton to ensure replicability. 
 
-
+## Assignment 3
+This assignment looked at data visualization and using the principles learned in class to create good plots using ggplot. Because my data has so many sites, it is hard to make a good looking graph, but I think I was able to accomplish this. 
 
 
 
