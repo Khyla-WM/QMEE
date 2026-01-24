@@ -5,6 +5,7 @@ cleaned_streams <- readRDS("assignment_2A_data_cleaning.rds")
 
 library(ggplot2)
 library(dplyr)
+## BMB: dplyr and tidyverse are part of ggplot2, this is redundant ...
 library(tidyverse)
 
 ##### For my first plot, I want to directly compare the years nutrient data for the years of overlap to make sure they are comparable for later analyses. #####
@@ -29,7 +30,8 @@ doc_comp <- cleaned_streams %>%
 site_order <- c("U01", "U02", "U03", "C04", 
                 "C05", "C06", "C07", "L08", 
                 "L09", "L10", "L11", "L12") #I considered ordering from highest to lowest DOC, but If I want to make DIC and TN graphs later for comparison, I think putting them in numerical order makes the most sense so I don't have to search for a site on both graphs
-
+## BMB: reasonable (this case, where someone is going to be looking up particular values, is a good exception to
+## "use a third variable of interest to sort the levels")
 
 doc_comp <- doc_comp %>% 
   mutate(site = factor(site, levels = site_order), 
@@ -66,7 +68,10 @@ print(DOC_improved)
   # 2) Faceting by year and creating boxes around the panels made each year visually distinct, making it easier to read and avoiding clutter on a single graph
   # 3) Ordering the sites numerically, though they also have letter groupings, tells a better story as it reflects the latitudinal order of each site (which in turn plays a large role on SBW defoliation patterns), and makes more sense to our brains even if the letters come first in the name, and will make comparisons with other nutrient calculations (DIC, TN) later more intuitive. 
 
-
+## BMB: consider flipping coordinates, *or* just printing the graph with a wide _aspect ratio_, to avoid
+## having to rotate x-axis labels (since they're reasonably short)
+## might want to override default black colour for outlier points. This is a little tricky since they use
+## the 'colour' aesthetic by default. 
 
 #### For my second graph (instead of just repeating the DOC one on the other measures), I want to look at my periphyton data. ####
 
@@ -80,7 +85,8 @@ periphyton_plot <- cleaned_streams %>%
     mean_val = mean(total.ug.cm2, na.rm = TRUE),
     se_val = sd(total.ug.cm2, na.rm = TRUE) / sqrt(sum(!is.na(total.ug.cm2))),
     .groups = "drop"
-  )
+  )  ## BMB: use .by ? if you're going to be calculating SE regularly, set up a 'utils.R' file?
+
 site_order <- periphyton_plot %>%
   group_by(site) %>%
   summarise(avg_mass = mean(mean_val, na.rm = TRUE)) %>%
@@ -95,13 +101,16 @@ ggplot(periphyton_plot, aes(x = year, y = mean_val, color = site)) +
   geom_errorbar(aes(ymin = mean_val - se_val, ymax = mean_val + se_val), width = 0.1, linewidth = 0.7) +
   labs(
     x = "Year",
-    y = "Total Periphyton Mass (ug/cm2)",
+    y = "Total Periphyton Mass (µg/cm2)",
     title = "Comparison of Periphyton mass over time by site",
     color = "Site"
   ) +
   theme_bw()
 
 # This graph also uses some of the fundamentals, such as keeping all the sites on the same graph to compare between them, and ordering the sites in the legend so they correspond to the order of periphyton biomass reflected in the graph. There were some issues, such as not being able to clearly see the colours of the lines, so I made them thicker but not so thick that they made the graph more crowded. I considered using hues instead of 14 different colours, since the Rausman video highlighted that hues can be more useful, however 14 hues were also too similar to tell apart
+## BMB: identifying 14 colours by category is going to be hard no matter what you do. It helps that the
+## legend/factor levels are in a sensible order. One possibility would be to facet by site first letter (U, C, L:
+## I'm not sure what these denote), so that each panel would have fewer subsites to compare
 
 # I am going to repeat this with a facet for the different periphyton components (cyanobacteria, green algae, diatoms)
 
@@ -123,9 +132,9 @@ peri_sep <- cleaned_streams %>%
     .groups = "drop"
   )
 
-peri_labels <- c("cyano.ug.cm2" = "Cyanobacteria", 
-                 "diat.ug.cm2" = "Diatoms", 
-                 "green.ug.cm2" ="Green Algae")
+peri_labels <- c("cyano.µg.cm2" = "Cyanobacteria", 
+                 "diat.µg.cm2" = "Diatoms", 
+                 "green.µg.cm2" ="Green Algae")
 
 peri_site_order <- peri_sep %>%
   group_by(site) %>%
@@ -133,6 +142,7 @@ peri_site_order <- peri_sep %>%
   arrange(desc(total_mass)) %>%
   pull(site)
 peri_sep <- peri_sep %>%
+  ## BMB: could use across()
   mutate(site = factor(site, levels = peri_site_order))
 
 
@@ -143,10 +153,15 @@ ggplot(peri_sep, aes(x = year, y = mean_val, color = site)) +
   facet_wrap(~variable, labeller = labeller(variable = peri_labels)) +
   labs(
     x = "Year",
-    y = "Periphyton Mass (ug/cm2)",
+    y = "Periphyton Mass (µg/cm2)",
     title = "Comparison of Periphyton mass over time by site",
     color = "Site"
   ) +
-  theme_bw()
+  theme_bw() +
+  scale_y_log10()
+
+## BMB: adding a log scale helps a little bit ...
 
 # These have all the same components as the previous, but we have faceted the different types of periphyton. I did originally have scales = free_y so that we could see more details within each type of periphyton (for example, its hard to discern what site is higher in the cyanobacteria panel since it is all at the bottom), but then decided to have the y axis fixed so you could compare the types of periphyton to each other. With free_y, it would have been a lot harder to see that diatoms are far more mass than cyanobacteria or green algae, even if it is hard to make out the mass of lines at the bottom of the cyanobacteria and algae panels. 
+
+## mark: 2.2
