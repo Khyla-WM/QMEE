@@ -143,3 +143,12 @@ NO2.NO3.mgL --> Dissolved nitrate and nitrite. mg/L. Lower Detection Limit = 0.0
 
 NH4.mgL --> dissolved ammonia. mg/L. Lower Detection Limit = 0.01
 
+## Assignment 4
+
+JD: Q1 As you say, their language is good; clarity might or might make it clearer (although I personally think it would eventually be good for all to move in that direction). What I think is missing here is effect size (ideally with CIs). Their t scores are redundant measures of clarity, differences with units would be much better here.
+
+Q2 That's kind of crazy to pool all clams from a site, I think. Better to embrace the noise and hope the stats pull you through
+
+Q3 Again makes sense, but the biggest improvement would be to change t scores to effect sizes (and, ideally P values to CIs).
+
+Grade: 2/3
