@@ -10,13 +10,17 @@ streams <- readRDS("assignment_2A_data_cleaning.rds")
 
 # I hypothesize that a higher dissolved organic carbon concentration (DOC) is associated with higher cyanobacteria biomass. In this hypothesis, my predictor variable is [DOC] and my response variable is cyanobacteria biomass. I also hypothesize that this relationship will be impacted by year, with higher DOC (and therefore cyanobacteria biomass) in more recent years due to the progression of the SBW outbreak. 
 
+## JD: I'm not quite following here. Do you mean that 22-25 are more affected than previous years? You can't test that by throwing the previous years out, obviously.
+
 # Part 2: Make a linear model for your hypothesis
 
   # I first made a revised object that has data just for 2022-2025, since those were the years most impacted by the outbreak. There are also a few random NAs which I removed, I still have more than enough data
+## JD: In general, it's good to describe NAs thoughtfully.
 streams_4yr <- streams %>% 
   filter(year %in% c(2022, 2023, 2024, 2025)) %>%
   filter(!is.na(cyano.ug.cm2))
 streams_4yr$year <- factor(streams_4yr$year) #I later had a lot of issues with year being treated as not-a-factor, so this was an attempt to get it to work properly
+## JD: Yes, this the standard move to make year into a factor
   
 lm1 <- lm(cyano.ug.cm2 ~ W_DOC.mgL * year, data = streams_4yr)
 lm1
@@ -27,6 +31,7 @@ lm1
 plot(lm1)
 # Those look awful, show my data needs to be log transformed 
 
+## JD: It's good to be thoughtful about what you add before log transforming (if you even need to); that choice can make a big difference. 
 lm2 <- lm(log(cyano.ug.cm2 + 0.000001) ~ W_DOC.mgL * year, data = streams_4yr)
 lm2
 plot(lm2)
@@ -35,9 +40,14 @@ plot(lm2)
 streams_4yr_nosmall <- streams_4yr %>% 
   filter(cyano.ug.cm2 > 0.001)
 
+## JD: All of this is bugging me just a bit, feels kind of random. I do agree those bottom left points are pretty concerning, but it's also worrying to just throw them out, I think. I would consider adding an offset that's informed by something about the measurement error. If you have a biggish, sensible offset, you might avoid all of these problems.
+
 lm3 <- lm(log(cyano.ug.cm2 + 1e-06) ~ W_DOC.mgL * factor(year),
           data = streams_4yr_nosmall)
+## JD: Why are you still adding an offset after removing small values?
+
 # I still later had issues with year not being treated as a factor, so I retroactively added this here to try to fix the later issues (which worked finally)
+## JD: That seems crazy, I'm skeptical. Maybe test again just remove that one piece.
 
 lm3
 plot(lm3)
@@ -77,3 +87,5 @@ plot(em_DOC_pairs) +
 
 # What I can interpret from this plot is that there was a clear change in how year impacted the DOC-cyanobacteria relationship in 2025, as all pairwise comparisons involving 2025 had confidence intervals not crossing zero. Because the confidence intervals were on the negative side of zero, and 2025 came second in all pairwise comparisons, the slopes in 2025 were clearly more positive than any other year. The least strong interaction involving 2025 was 2022-2025, which was closest to 0, however the CI still remained entirely in the negative. This is reflected in the previous graph, where 2025 has a much steeper positive slope than other year, and 2022 is the only other year with a positive slope. 
 # The other pairwise comparisons showed that there is no clear difference between the final three years, as the points are near 0 and confidence intervals cross over 0. 
+
+## Grade 2/3
